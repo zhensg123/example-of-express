@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "codejoy-dev",
+  "private_key_id": "c40b6ff2d5bf815c6a0394fdcffe4f1633f14f89",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC+I1UgzhcaYu5r\n1HOMGcXX0H0eLLYhsLAq993Sah8s+Y41hZjbY4aXaoykzKYdUyexHF8LVVI6PuWo\nIogPb/ylGl43z62h4FVF8DiInzKwTn9jGPsB+jepKjiH9YsohSmAuEGsrrCmaWEq\nDzmOtGPGZQxoG8l6IUi8OZafkF7zwxAptgI7v370JycSy9A2W+SSk3uj+B8H3eBj\n47CED6nGQiS1LGIhWw8nn+O2tmZmm/nyKDidVgJdrurKU0cIShJvr+DYe7kWHlaO\now5qmefM8Us8Ob4FvdDzrRcPQtSxR9AuH6nkvkjv3zyq20487YKLJ0vvW6Zc9BGU\nJBT/j4UjAgMBAAECggEAT9AZDdo0zHi2yEC3+BlheQQlYSM3mNDIQmEllgvB5mkj\nDshzr7QJbUnmm87j8+9R/ACCzQkVqSl50agdIQ3LKar13cupgQfgA6mgsYjSCDwL\nMRftVZkpADOe40NpFKtBDq1JtCjoMhKOHM+jQ4npUABewtzXKBMMqyYpWfWKRhvj\nSyU5oLUA0knYMOqyWJc3JOzvHGTXFawW+nHnpEA3gqvEnUNxF7pOT9CPmh5gdGVz\n3iFaSAbWCtrLZS0ISj4C36wgEs7/WlpkFrO9KFBPyIjS1fdeQSkBcKGjlv5RHnOq\nEECcjb5bSFjP6KpohKC2nm/dVl63VeDwXRHf8uWJwQKBgQD1TO1zCfb1HXxB9p10\ndkCRehXGprVBrIT7m2mUqu9GXN+WeMlixk0Na/0A/EcLDl6o1Qf6XbNgGdrTLOF6\nc1XA8kI4ZYosyAaidGD83DYEWlZhwR9D/3d8PL08IkCXeQQM0rOQALAneIrHnwFN\nILH/nt86EGDrZTcN7Sa0bdbrswKBgQDGbnM8yKRAJNkQvyvtWqj1vVAglpBZTdfR\nRfvw8ohMTn+KTJ2G7c+yBOa6zOqT4QQChYsRn8pBxITEoILtNuO04LrEeBbE9tg8\nB7kD82Y2yB5x26OQ96vxkzFnC5aSMT2sIX9M9Q68QC7z7NeOI0/cVxG+xNRzDDVV\ntb8TSZaI0QKBgFDRP4ofRlYLmNzCu62bKDrF1lbUpfM1O7sJwQdSKfMsth2FPhRk\n8Q3y/jBM7bseyOEnDrHWHTsUSZw5tS/6v84KAvdBvPx0CnuLjEjC5KkaektKrVph\n2KP9/vrI7i75l/QBl1diYqced9q88FjQ5NQrK7CdpNDpT/IuqAnaBm0xAoGBAIIu\nrEPQjpHWmuI1yafqtraiAROgNAui2lhdxbCKLYmCZoJhSWfgVUbBmG4tSijCk1Lk\nMhzZ7GPBfilR9ROT00gzt9R1xNpr5+laV7OT2BdQq0ifhGvzUUcn/l1QaPR4gbGQ\nOGhQzd4LbcJyO+jwmdBA/09c6tSfyc31cupAeRZBAoGBAOKLjiylYxEl495LyzLd\nxG/5izXYr8w4VzLrw5BBJ9kkHfiY2lUQmQA890v3ImEIIQt6G8kKcAjSPJzN57R0\nMmAqP7fG1s4beYO8HXp4U6B24XhHKoebZNtparXTxJnNXxNE1zCDdXfLIo1oUa6D\nT32MuTQrF0dnKdTxO4Lb0lvb\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-hzad8@codejoy-dev.iam.gserviceaccount.com",
+  "client_id": "100341726085987116368",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-hzad8%40codejoy-dev.iam.gserviceaccount.com"
+}
