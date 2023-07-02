@@ -6,6 +6,7 @@ const Result = require('../models/Result')
 /* GET users listing. */
 router.get('/findAll', async function(req, res, next) {
    const employee = await employeeService.findAll()
+   console.log(employee, 'employee')
    if (employee) {
       new Result(employee, '获取成功', 'success').success(res)
    } else {

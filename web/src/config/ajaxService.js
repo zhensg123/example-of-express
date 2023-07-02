@@ -108,7 +108,7 @@ function (error) {
 myAjax.interceptors.response.use(response => {
   const requestKey = response.config.requestKey
   pendingRequests.delete(requestKey)
-  return dealCode(response)
+  return response
 }, error => {
   if (axios.isCancel(error)) {
     console.warn(error)

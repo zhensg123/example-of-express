@@ -19,7 +19,7 @@ const employee = sequelize.define('employee', {
     },
     salary: DataTypes.INTEGER,
     dname: DataTypes.INTEGER,
-    hiredate: DataTypes.Date
+    hiredate: DataTypes.DATE       
 }, {
     paranoid: true,  // paranoid表就是软删除而非硬删除机制的表
     tableName: 'employee',

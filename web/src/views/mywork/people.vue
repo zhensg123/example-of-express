@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import myworkApi from './api/mywork';
 export default {
   data () {
     return {
@@ -66,7 +67,15 @@ export default {
   methods: {
     onSubmit () {
       console.log('submit!')
+    },
+    getEmployeeAll(){
+      myworkApi.getEmployeeAll({}).then((res)=>{
+    
+      })
     }
+  },
+  created(){
+    this.getEmployeeAll()
   }
 }
 </script>
