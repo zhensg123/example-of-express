@@ -7,11 +7,12 @@ const express = require('express')
 const boom = require('boom')
 const userRouter = require('./users')
 const employeeRouter = require('./employee')
-
+const jwtAuth = require('./jwt')
 // 注册路由
 const router = express.Router()
 
 // 对后续请求进行身份验证
+router.use(jwtAuth)
 
 router.get('/', function(req, res) {
   // 默认会带上layout文件 可以通过layout:null 去掉
