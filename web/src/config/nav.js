@@ -15,16 +15,25 @@ files
 const menus = {
   mywork: {
     name: '我的工作',
-    icon: 'icon-wodegongzuo'
+    icon: 'icon-wodegongzuo',
+    key: 'mywork'
   }
 }
 const menuArr = Object.keys(menus).map((menu) => {
-  const { name, icon } = menus[menu]
+  const { name, icon, key} = menus[menu]
+  const children = configRoutes.find((route) => route.name === menu).children
   const temp = {
     menu: name,
     icon,
-    children: configRoutes.filter((route) => route.name === menu)
+    key,
+    children: children.map((item)=>{
+      return {
+        ...item,
+        path: `/${key}/${item.path}`
+      }
+    })
   }
+
   return temp
 })
 
