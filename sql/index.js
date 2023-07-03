@@ -27,17 +27,16 @@ async function findByPk(TableName, id) {
     return inst;
 }
 
-async function findData(TableName, whereObj, pageNo) {
+async function findData(TableName, whereObj, pageObj) {
     whereObj = whereObj || {}
-    const size = 10; // 每页10条数据
-    const page = pageNo || 1; // 页数
-    const { count, rows } = (async() => {
-        return await TableName.findAndCountAll({
-            where: whereObj,
-            limit: size,
-            offset: size * (page - 1)
-        });
-    })();
+    const {size, page} = pageObj
+    const { count, rows } = await TableName.findAndCountAll({
+        where: whereObj,
+        limit: size,
+        offset: size * (page - 1)
+    });
+    console.log(count, rows, 'deeeee')
+
     return { count, rows };
 }
 

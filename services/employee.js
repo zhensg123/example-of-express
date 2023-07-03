@@ -21,6 +21,9 @@ var employeeService = {
     findAll: async function(obj, isRaw) {
         return await sql.findAll(employee, obj, null, isRaw);
     },
+    findData: async function(obj, pageObj) {
+        return await sql.findData(employee, obj, pageObj);
+    },
     update: async function(id, obj) {
         return await sql.updateData(employee, obj, {
             id: id
