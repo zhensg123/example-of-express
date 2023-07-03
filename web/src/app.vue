@@ -6,16 +6,19 @@
   </div>
 </template>
 
-
-
 <script>
 export default {
-  data() {
+  data () {
     return {
-    };
+    }
   }
-};
+}
 </script>
-  
-
-  
+<style>
+#app {
+  height: 100%;
+}
+html, body {
+  height: 100%;
+}
+</style>

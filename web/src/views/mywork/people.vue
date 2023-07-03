@@ -2,7 +2,7 @@
   <div class="people">
     <el-form :inline="true" :model="formInline" class="demo-form-inline">
       <el-form-item label="姓名">
-        <el-input v-model="formInline.keyword" placeholder="姓名"></el-input>
+        <el-input clearable v-model="formInline.keyword" placeholder="姓名"></el-input>
       </el-form-item>
 
       <el-form-item>
@@ -10,7 +10,7 @@
       </el-form-item>
     </el-form>
     <el-table :data="tableData" v-loading="loading" style="width: 100%">
-      
+
       <el-table-column prop="eno" label="编号" width="180"> </el-table-column>
 
       <el-table-column prop="ename" label="姓名" width="180"> </el-table-column>
@@ -18,7 +18,7 @@
       <el-table-column prop="salary" label="工资"> </el-table-column>
     </el-table>
     <div class="pagination">
-   
+
       <el-pagination
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
@@ -33,12 +33,12 @@
 </template>
 
 <script>
-import myworkApi from './api/mywork';
+import myworkApi from './api/mywork'
 export default {
   data () {
     return {
       formInline: {
-        keyword: '',
+        keyword: ''
       },
       page: {
         total: 0,
@@ -54,31 +54,31 @@ export default {
     onSubmit () {
       console.log('submit!')
     },
-    handleSizeChange(size){
+    handleSizeChange (size) {
       this.page.pageSize = size
-       this.getEmployeeAll()
+      this.getEmployeeAll()
     },
-    handleCurrentChange(index){
-       this.page.pageIndex = index
-       this.getEmployeeAll()
+    handleCurrentChange (index) {
+      this.page.pageIndex = index
+      this.getEmployeeAll()
     },
-    getEmployeeAll(){
+    getEmployeeAll () {
       this.loading = true
-      const {pageSize, pageIndex}  = this.page
+      const { pageSize, pageIndex } = this.page
       myworkApi.getEmployeeAll({
         pageSize,
         pageIndex,
         keyword: this.formInline.keyword
-      }).then((res)=>{
-        const {count, rows} = res.data.data
-         this.tableData = rows
-         this.page.total = count
-      }).finally(()=>{
+      }).then((res) => {
+        const { count, rows } = res.data.data
+        this.tableData = rows
+        this.page.total = count
+      }).finally(() => {
         this.loading = false
       })
     }
   },
-  created(){
+  created () {
     this.getEmployeeAll()
   }
 }

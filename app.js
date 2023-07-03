@@ -8,20 +8,24 @@ var logger = require('morgan');
 
 var app = express();
 
-// var cors = express('cors')
- 
-// app.use(cors)
+const swaggerUi = require('swagger-ui-express')
+const swaggerJSDoc = require('swagger-jsdoc')
 
-app.all('*', function (req, res, next) {
-  // res.header("Access-Control-Allow-Origin", req.headers.origin);
-  res.header("Access-Control-Allow-Origin", '*');
-  res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
-  res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
-  res.header("Access-Control-Allow-Credentials","true");
-  res.header("X-Powered-By",' 3.2.1')
-  if(req.method === "OPTIONS") res.send(200);/*让options请求快速返回*/
-  else  next();
-})
+const cors = require('cors')
+
+// app.all('*', function (req, res, next) {
+//   // res.header("Access-Control-Allow-Origin", req.headers.origin);
+//   res.header("Access-Control-Allow-Origin", '*');
+//   res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
+//   res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+//   res.header("Access-Control-Allow-Credentials","true");
+//   res.header("X-Powered-By",' 3.2.1')
+//   if(req.method === "OPTIONS") res.send(200);/*让options请求快速返回*/
+//   else  next();
+// })
+
+
+app.use(cors())
 
 var indexRouter = require('./routes/index');
 
@@ -37,6 +41,33 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+
+// 配置 swagger-jsdoc
+const options = {
+  definition: {
+      // swagger 采用的 openapi 版本 不用改
+      openapi: '3.0.0',
+      // swagger 页面基本信息 自由发挥
+      info: {
+          title: 'Imooc API Server',
+          version: '1.0.0',
+      }
+  },
+  // 重点，指定 swagger-jsdoc 去哪个路由下收集 swagger 注释
+  apis: [path.join(__dirname, '/routes/*.js')]
+}
+
+const swaggerSpec = swaggerJSDoc(options)
+
+// 开放 swagger 相关接口，
+app.get('/swagger.json', function(req, res) {
+  res.setHeader('Content-Type', 'application/json');
+  res.send(swaggerSpec);
+});
+
+// 使用 swaggerSpec 生成 swagger 文档页面，并开放在指定路由
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use('/', indexRouter);
 
 // catch 404 and forward to error handler

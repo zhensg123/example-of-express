@@ -5,7 +5,23 @@ const Result = require('../models/Result')
 const seq = require('sequelize');
 
 const Op = seq.Op;
-/* GET users listing. */
+/**
+ * @swagger
+ *  /employee/findAll:
+ *    get:
+ *      tags:
+ *        - employee
+ *      parameters:
+ *        - name: pageSize
+ *          description: 页数
+ *        - name: pageIndex
+ *          description: 页码
+ *        - name: keyword
+ *          description: 搜索关键词
+ *      responses:
+ *        200:
+ *          description: 查询结果
+ */
 router.get('/findAll', async function(req, res, next) {
    const {pageSize = 10, pageIndex = 1, keyword} = req.query
    console.log(req.query, 'req')
