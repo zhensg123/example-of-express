@@ -24,6 +24,8 @@
 
 <script>
 import loginApi from './login'
+import Cookies from 'js-cookie'
+
 export default {
   data () {
     return {
@@ -33,42 +35,45 @@ export default {
       },
       rules: {
         username: [{
-            required: true,
-            message: '输入账号',
-            trigger: ['blur', 'change']
+          required: true,
+          message: '输入账号',
+          trigger: ['blur', 'change']
         }],
         password: [{
-            required: true,
-            message: '输入密码',
-            trigger: ['blur', 'change']
+          required: true,
+          message: '输入密码',
+          trigger: ['blur', 'change']
         }]
       },
       btnloading: false
     }
   },
   methods: {
-    submit(){
-        this.$refs.ruleForm.validate((valid) => {
-          if (valid) {
-            this.postUserLogin()
-          } else {
+    submit () {
+      this.$refs.ruleForm.validate((valid) => {
+        if (valid) {
+          this.postUserLogin()
+        } else {
 
-          }
-        })
+        }
+      })
     },
-    postUserLogin(){
+    postUserLogin () {
       this.btnloading = true
       loginApi.postUserLogin({
         ...this.ruleForm
-      }).then((res)=>{
+      }).then((res) => {
+        const token = res.data.token
+        Cookies.set('token', token)
+         this.$store.commit('initUsername', this.ruleForm.username)
         this.$message({
-                message: '登陆成功',
-                type: 'success'
-            })
-            setTimeout(()=>{
-                this.$router.push('/')
-            }, 1500)
-      }).finally(()=>{
+          message: '登陆成功',
+          type: 'success'
+        })
+        setTimeout(() => {
+          this.$router.push('/')
+        }, 1500)
+      }).finally(() => {
         this.btnloading = false
       })
     }
