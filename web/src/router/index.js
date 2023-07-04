@@ -34,4 +34,15 @@ const router = new VueRouter({
   routes
 })
 
+router.beforeEach((from, to, next) => {
+
+  // console.log(from, 'from', to)
+  // 如果是开发环境不做校验 否则对cookie做校验
+  if (Cookies.get('xone')) {
+
+  } else {
+   
+  }
+})
+
 export default router
