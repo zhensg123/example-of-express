@@ -23,7 +23,7 @@ const Op = seq.Op;
  *          description: 查询结果
  */
 router.get('/findAll', async function(req, res, next) {
-   const {pageSize = 10, pageIndex = 1, keyword} = req.query
+   const {pageSize = 10, pageIndex = 1, keyword=''} = req.query
    console.log(req.query, 'req')
 
    const employee = await employeeService.findData({

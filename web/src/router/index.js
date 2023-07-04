@@ -10,7 +10,7 @@ const routes = [
   {
     path: '/',
     name: 'mywork',
-    redirect: '/mywork/target'
+    redirect: '/mywork/people'
   },
   {
     path: '/error',

@@ -45,6 +45,20 @@ const students = sequelize.define('students', {
 
 
 
+const users = sequelize.define('users', {
+    id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true
+    },
+    username: DataTypes.STRING,
+    password: DataTypes.TEXT
+}, {
+    tableName: 'users',
+    timestamps: false
+
+});
 // const Teaching = sequelize.define('ClassCourse', {
 
 // // 课程和课时关系
@@ -89,4 +103,4 @@ const students = sequelize.define('students', {
     console.log("All models were synchronized successfully.");
 })();
 
-module.exports = { employee,students }
+module.exports = { employee,students, users }

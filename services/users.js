@@ -1,7 +1,7 @@
-var User = require('../sql/tables').User;
+var User = require('../sql/tables').users;
 var sql = require('../sql');
 
-const avatarUrl ="https://i.imgur.com/iN3L6aI.png"
+// const avatarUrl ="https://i.imgur.com/iN3L6aI.png"
 
 var userService = {
     login: async function(username, password) {
@@ -28,7 +28,7 @@ var userService = {
         })
     },
     addUser: async function(userObj) {
-        userObj.avatar = avatarUrl
+        // userObj.avatar = avatarUrl
         return await sql.insertData(User, userObj)
     },
     updateUser: async function(id, obj) {
