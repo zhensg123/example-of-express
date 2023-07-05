@@ -6,7 +6,7 @@
         </div>
         <div class="user-name">
           <i class="iconfont icon-yonghu" style="color: #409eff"></i
-          ><span>剑客</span>
+          ><span>{{username}}</span>
           <i class="iconfont icon-tuichu" @click="loginOut"></i>
         </div>
       </div>
@@ -55,80 +55,89 @@
       <back-top></back-top>
     </div>
   </template>
-  
-  <script>
-  import menuList from '@/config/nav'
-  export default {
-    data () {
-      return {
-        isCollapse: false,
-        menuList,
-        breadcrumb: [],
-        titleShow: true
-      }
-    },
-    methods: {
-      handleOpen () {},
-      handleClose () {},
-      loginOut () {
-        this.$confirm('确定退出?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
+
+<script>
+import menuList from '@/config/nav'
+import Cookies from 'js-cookie'
+import {mapState} from 'vuex'
+export default {
+  data () {
+    return {
+      isCollapse: false,
+      menuList,
+      breadcrumb: [],
+      titleShow: true
+    }
+  },
+  computed: {
+    ...mapState({
+      username: (state)=>state.username
+    })
+  }, 
+  methods: {
+    handleOpen () {},
+    handleClose () {},
+    loginOut () {
+      this.$confirm('确定退出?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      })
+        .then(() => {
+          Cookies.remove('token');
+          this.$router.push('/login')
         })
-          .then(() => {
+        .catch(() => {})
+    }
+  },
+  watch: {
+    $route: {
+      handler (route) {
+        const obj = menuList.find((item) => {
+          return item.children.find((child) => {
+            return child.path === route.path
           })
-          .catch(() => {})
-      }
-    },
-    watch: {
-      $route: {
-        handler (route) {
-          const obj = menuList.find((item) => {
-            return item.children.find((child)=>{
-                return child.path === route.path
-            })
-          })
+        })
 
-          if (obj) {
-            const childObj = obj.children.find(
-              (child) => child.path === route.path
-            )
-            console.log(obj, childObj, 'childObj')
+        if (obj) {
+          const childObj = obj.children.find(
+            (child) => child.path === route.path
+          )
+          console.log(obj, childObj, 'childObj')
 
-            this.breadcrumb = [
-              {
-                menu: obj.menu
-              },
-              {
-                menu: childObj.menu,
-                path: childObj.path
-              }
-            ]
-          } else {
-            this.breadcrumb = [
-              {
-                menu: '臣妾找不到路径……'
-              }
-            ]
-          }
-        },
-        immediate: true
-      }
+          this.breadcrumb = [
+            {
+              menu: obj.menu
+            },
+            {
+              menu: childObj.menu,
+              path: childObj.path
+            }
+          ]
+        } else {
+          this.breadcrumb = [
+            {
+              menu: '臣妾找不到路径……'
+            }
+          ]
+        }
+      },
+      immediate: true
     }
   }
-  </script>
-  
+}
+</script>
+
   <style lang="scss" scoped>
   #layout.iscollapse-style {
     .header {
       left: 64px;
     }
-  
+
     .left {
       width: 64px;
     }
-  
+
     .right {
       padding-left: 69px;
     }
@@ -170,7 +179,7 @@
       color: #1e80ff;
     }
   }
-  
+
   #layout {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     color: #2c3e50;
@@ -209,7 +218,7 @@
           font-weight: bold;
         }
       }
-  
+
       ::v-deep > ul {
         height: 100%;
         border: none;
@@ -236,7 +245,7 @@
         }
       }
     }
-  
+
     .header {
       position: fixed;
       top: 0;
@@ -250,7 +259,7 @@
       transition: all 0.5s;
       z-index: 100;
       border: 1px solid #efeaed;
-  
+
       .handle-btn {
         height: 100%;
         width: 40px;
@@ -258,7 +267,7 @@
         align-items: center;
         margin-left: 5px;
         cursor: pointer;
-  
+
         i {
           font-size: 18px;
           margin-left: 10px;
@@ -268,14 +277,14 @@
           background: #ecf5ff;
         }
       }
-  
+
       .user-name {
         height: 100%;
         display: flex;
         align-items: center;
         padding-right: 10px;
         color: #000;
-  
+
         i {
           padding-right: 5px;
           font-size: 18px;
@@ -288,13 +297,13 @@
         }
       }
     }
-  
+
     .right {
       margin-top: 53px;
       padding-left: 193px;
       transition: all 0.5s;
       margin-bottom: 80px;
-  
+
       .breadcrumb {
         background-color: #fff;
         padding: 10px;
@@ -303,4 +312,3 @@
     }
   }
   </style>
-  

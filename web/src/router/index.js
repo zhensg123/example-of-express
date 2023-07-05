@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import configRoutes from './modules'
 import E403 from '@/views/E403'
 import E404 from '@/views/E404'
-
+import Cookies from 'js-cookie'
 Vue.use(VueRouter)
 
 const routes = [
@@ -35,14 +35,20 @@ const router = new VueRouter({
 })
 
 router.beforeEach((from, to, next) => {
-
-  // console.log(from, 'from', to)
   // 如果是开发环境不做校验 否则对cookie做校验
-  if (Cookies.get('xone')) {
-
+  if (from.name === 'login' || from.name === 'register') {
+    next()
   } else {
-   
+    if (Cookies.get('token')) {
+      next()
+    } else {
+      next('/login')
+    }
   }
 })
-
+const originalPush = VueRouter.prototype.push
+// 修改原型对象中的push方法
+VueRouter.prototype.push = function push (location) {
+  return originalPush.call(this, location).catch(err => err)
+}
 export default router
