@@ -1,14 +1,14 @@
 import axios from 'axios'
 import { Message } from 'element-ui'
-
 const qs = require('qs')
 // let Base64 = require('js-base64').Base64
 // let bauth = 'Basic ' + Base64.encode('auto_cloud:qaz@#$<>?075')
+import Cookies from 'js-cookie'
 
 const myAjax = axios.create()
 const dealWarn = (responseData) => {
   Message({
-    message: responseData.error || responseData.message || responseData.err,
+    message: responseData.msg,
     type: 'warning'
   })
   return Promise.reject(responseData)
@@ -16,15 +16,18 @@ const dealWarn = (responseData) => {
 
 const dealCode = (response) => {
   const code = response.data.code
-  if (code !== undefined && code !== 200) {
+  if (code !== 0) {
     const responseData = response.data
-    if (code === 401) {
-      localStorage.removeItem('LoginUserInfo')
-      Message({
-        message: responseData.error || responseData.message,
+    const {error} = responseData
+    if (error === 401) {
+       Message({
+        message: responseData.msg,
         type: 'warning'
       })
-      return false
+      Cookies.remove("token")
+      location.href = '/login'
+      // new VueRouter().push('/login')
+      return Promise.reject(responseData.msg)
     }
     return dealWarn(responseData)
   }
@@ -93,7 +96,7 @@ myAjax.interceptors.request.use(function (config) {
   //   pendingRequests.set(requestKey, config)
   //   config.requestKey = requestKey
   // }
-  // config.headers['Authorization'] = bauth
+  config.headers['authorization'] = "Bearer" + " " + Cookies.get("token")
   return config
 },
 function (error) {
@@ -108,7 +111,8 @@ function (error) {
 myAjax.interceptors.response.use(response => {
   const requestKey = response.config.requestKey
   pendingRequests.delete(requestKey)
-  return response
+  return dealCode(response)
+  
 }, error => {
   if (axios.isCancel(error)) {
     console.warn(error)

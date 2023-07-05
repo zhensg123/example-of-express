@@ -11,6 +11,24 @@ const jwtAuth = require('./jwt')
 // 注册路由
 const router = express.Router()
 
+
+// 解析token获取用户信息
+// router.use(function (req, res, next) {
+//   // authorization 必须为这个  和前端保持一致
+//     var token = req.headers['authorization'];
+  
+//     if (token == undefined) {
+//       return next();
+//     } else {
+//       vertoken.verToken(token).then((data) => {
+//         req.data = data;
+//         return next();
+//       }).catch((error) => {
+//         return next();
+//       })
+//     }
+//   });
+
 // 对后续请求进行身份验证
 router.use(jwtAuth)
 

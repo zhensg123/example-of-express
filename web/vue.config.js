@@ -103,7 +103,11 @@ module.exports = defineConfig({
   configureWebpack: {
     plugins
   },
-
+  devServer: {
+    client: {
+      overlay: false,
+    }
+  }
   // css: {
   //   loaderOptions: {
   //     // 给 sass-loader 传递选项

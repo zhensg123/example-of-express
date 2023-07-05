@@ -63,7 +63,8 @@ export default {
       loginApi.postUserLogin({
         ...this.ruleForm
       }).then((res) => {
-        const token = res.data.token
+        const token = res.data.data.token
+        console.log(token, 'token')
         Cookies.set('token', token)
          this.$store.commit('initUsername', this.ruleForm.username)
         this.$message({
