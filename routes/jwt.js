@@ -4,7 +4,7 @@ const { PRIVATE_KEY } = require('../utils/code-status');
 const jwtAuth = expressJWT({
      secret: PRIVATE_KEY,
      algorithms: ["HS256"],
-     credentialsRequired: false // 设置为false就不进行校验了，游客也可以访问
+    //  credentialsRequired: false // 设置为false就不进行校验了，游客也可以访问
 }).unless({
     path: [
         '/',
