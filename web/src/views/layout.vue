@@ -17,7 +17,7 @@
               <use xlink:href="#icon-chanxianxiaoshuaitisheng"></use>
             </svg>
           </p>
-          <p class="title-name" v-show="!isCollapse">海贼王</p>
+          <p class="title-name" v-show="!isCollapse">项目案例</p>
         </div>
         <el-menu
           router
