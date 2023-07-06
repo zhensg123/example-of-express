@@ -2,7 +2,6 @@ const debug = require('../utils/constant').debug
 var User = require('./tables').User;
 
 async function insertData(TableName, data) {
-    console.log(data, 'req.body22')
     return await TableName.create(data);
 
 }
@@ -28,6 +27,7 @@ async function findByPk(TableName, id) {
     return inst;
 }
 
+// 分页查询
 async function findData(TableName, whereObj, pageObj) {
     whereObj = whereObj || {}
     const {size, page} = pageObj
