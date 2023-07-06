@@ -36,7 +36,6 @@ async function findData(TableName, whereObj, pageObj) {
         limit: size,
         offset: size * (page - 1)
     });
-    console.log(count, rows, 'deeeee')
 
     return { count, rows };
 }
