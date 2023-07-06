@@ -2,7 +2,7 @@ const debug = require('../utils/constant').debug
 var User = require('./tables').User;
 
 async function insertData(TableName, data) {
-    console.log(data, 'userObjuserObjuserObj')
+    console.log(data, 'req.body22')
     return await TableName.create(data);
 
 }

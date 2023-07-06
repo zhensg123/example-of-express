@@ -10,7 +10,7 @@ var employeeService = {
     },
     delete: async function(id) {
         return await sql.deleteData(employee, {
-            id: id
+            eno: id
         })
     },
     find: async function(id) {
@@ -26,7 +26,7 @@ var employeeService = {
     },
     update: async function(id, obj) {
         return await sql.updateData(employee, obj, {
-            id: id
+            eno: id
         })
     }
 }
