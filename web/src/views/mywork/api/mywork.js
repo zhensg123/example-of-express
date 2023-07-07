@@ -6,6 +6,15 @@ const myworkApi = {
   },
   getEmployeeAll (params) { // 获取所有树
     return ajaxGetData({ url: `http://localhost:3000/employee/findAll`, params: params })
+  },
+  postAddEmployee (params) { // 获取所有树
+    return ajaxPostJson({ url: `http://localhost:3000/employee/add`, params: params })
+  },
+  postUpdateEmployee (params) { // 获取所有树
+    return ajaxPostJson({ url: `http://localhost:3000/employee/update`, params: params })
+  },
+  delEmployeeById (params) { // 获取所有树
+    return ajaxDeleteData({ url: `http://localhost:3000/employee/del`, params: params })
   }
 }
 export default myworkApi

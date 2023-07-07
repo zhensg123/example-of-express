@@ -8,9 +8,7 @@ module.exports = {
     PWD_SALT: 'admin_imooc_node',
     PRIVATE_KEY: 'admin_imooc',
     JWT_EXPIRED: 60 * 60, // token失效时间
-
     UPLOAD_FILE_PATH: os.type() == 'Linux' ? '/opt/file' : os.homedir(),
-
     ROLE_TEACHER: 'teacher',
     ROLE_STUDENT: 'student'
 }

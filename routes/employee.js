@@ -42,4 +42,28 @@ router.get('/findAll', async function(req, res, next) {
    }
 });
 
+router.post('/add', async function(req, res, next) {
+   console.log(req.body, 'req.body2')
+   const employee = await employeeService.add(req.body)
+   new Result(employee, '新增成功', 'success').success(res)
+
+});
+
+router.post('/update', async function(req, res, next) {
+   const {eno, ename, salary, dname, hiredate  } = req.body
+   const employee = await employeeService.update(eno, {
+      ename,
+     salary,
+     dname,
+     hiredate
+   })
+   new Result(null, '更新成功', 'success').success(res)
+});
+
+router.delete('/del', async function(req, res, next) {
+   const id = req.query.id;
+   await employeeService.delete(id)
+   new Result(null, '删除成功', 'success').success(res)
+});
+
 module.exports = router;
