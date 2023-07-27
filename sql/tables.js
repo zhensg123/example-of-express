@@ -51,4 +51,4 @@ const students = sequelize.define('students', {
     console.log("All models were synchronized successfully.");
 })();
 
-module.exports = { employee }
+module.exports = { employee, students }

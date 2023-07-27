@@ -4,7 +4,6 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-
 var app = express();
 
 const swaggerUi = require('swagger-ui-express')
@@ -13,7 +12,10 @@ const swaggerJSDoc = require('swagger-jsdoc')
 // cors解决跨域问题
 const cors = require('cors')
 
-app.use(cors())
+
+app.use(cors({
+  credentials: true // 允许前端传递cookie
+}))
 
 var indexRouter = require('./routes/index');
 

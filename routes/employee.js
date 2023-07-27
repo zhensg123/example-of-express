@@ -34,7 +34,6 @@ router.get('/findAll', async function(req, res, next) {
       size: parseInt(pageSize),
       page: parseInt(pageIndex)
    })
-   console.log(employee, 'employee')
    if (employee) {
       new Result(employee, '获取成功', 'success').success(res)
    } else {
