@@ -51,7 +51,7 @@ router.post('/add', async function(req, res, next) {
 
 router.post('/update', async function(req, res, next) {
    const {eno, ename, salary, dname, hiredate  } = req.body
-   const employee = await employeeService.update(eno, {
+   await employeeService.update(eno, {
       ename,
      salary,
      dname,

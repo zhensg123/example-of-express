@@ -1,6 +1,6 @@
 const crypto = require('crypto')
 const jwt = require('jsonwebtoken')
-const { PRIVATE_KEY } = require('./code-status')
+const { PRIVATE_KEY } = require('./constant')
 
 function md5(s) {
     // 注意参数需要为 String 类型，否则会出错

@@ -86,16 +86,7 @@ const pendingRequests = new Map()
 
 myAjax.interceptors.request.use(function (config) {
   const requestKey = `${config.url}/${JSON.stringify(config.params)}&request_type=${config.method}`
-  console.log(requestKey, pendingRequests.has(requestKey))
-  // if (pendingRequests.has(requestKey)) {
-  //   config.cancelToken = new axios.CancelToken((cancel) => {
-  //     // cancel 函数的参数会作为 promise 的 error 被捕获
-  //     cancel(`重复的请求被主动拦截: ${requestKey}`)
-  //   })
-  // } else {
-  //   pendingRequests.set(requestKey, config)
-  //   config.requestKey = requestKey
-  // }
+  // 后端校验必须格式
   config.headers['authorization'] = "Bearer" + " " + Cookies.get("token")
   return config
 },

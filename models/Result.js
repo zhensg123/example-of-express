@@ -2,24 +2,10 @@ const {
     CODE_ERROR,
     CODE_SUCCESS,
     CODE_TOKEN_EXPIRED
-} = require('../utils/code-status')
+} = require('../utils/constant')
 
 class Result {
     constructor(data, msg = '操作成功', enMsg = 'Success', options) {
-        // this.data = null
-        // if (arguments.length === 0) {
-        //     this.msg = '操作成功'
-        //     this.enMsg = 'Success'
-        // } else if (arguments.length === 1) {
-        //     this.msg = data
-        // } else {
-        //     this.data = data
-        //     this.msg = msg
-        //     this.enMsg = enMsg
-        //     if (options) {
-        //         this.options = options
-        //     }
-        // }
         if (data) {
             this.data = data
         }
